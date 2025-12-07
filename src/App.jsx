@@ -87,13 +87,18 @@ function App() {
   const selectedProjectId = projectState.project.find(
     (project) => project.id === projectState.projectId
   );
+
+  const selectedProjectTasks = projectState.task.filter(
+    (task) => task.projectId === projectState.projectId
+  );
+
   let content = (
     <SelectedProject
       onAddTask={addTask}
       onDeleteTask={deleteTask}
       onDelete={handleDeleteProject}
       project={selectedProjectId}
-      tasks={projectState.task}
+      tasks={selectedProjectTasks}
     />
   );
   if (projectState.projectId === null) {
